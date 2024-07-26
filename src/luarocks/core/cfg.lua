@@ -366,7 +366,7 @@ local function make_defaults(lua_version, target_cpu, platforms, home)
       }
       defaults.runtime_external_deps_patterns = {
          bin = { "?.exe", "?.bat" },
-         lib = { "cyg?.dll", "?.dll", "lib?.dll" },
+         lib = { "lib?.a", "cyg?.dll", "?.dll", "lib?.dll" },
          include = { "?.h" }
       }
       defaults.link_lua_explicitly = true
