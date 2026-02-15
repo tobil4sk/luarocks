@@ -4,7 +4,7 @@ local result = {}
 
 local res, status, headers, err = http.request {
 	url = "https://luarocks.org/manifest-5.1.json",
-	proxy = nil,
+	-- proxy = nil,
 	method = "GET",
 	redirect = false,
 	sink = ltn12.sink.table(result),
