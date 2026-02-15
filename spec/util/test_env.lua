@@ -398,7 +398,8 @@ function test_env.set_args()
             test_env.TEST_TARGET_OS = "linux"
             if test_env.CI then
                test_env.OPENSSL_INCDIR = "/usr/include"
-               test_env.OPENSSL_LIBDIR = "/usr/lib/x86_64-linux-gnu"
+               local arch = execute_output("uname -m")
+               test_env.OPENSSL_LIBDIR = "/usr/lib/"..arch.."-linux-gnu"
             end
          elseif system == "Darwin" then
             test_env.TEST_TARGET_OS = "osx"
