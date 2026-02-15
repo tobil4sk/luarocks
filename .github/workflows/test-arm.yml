@@ -13,12 +13,14 @@ jobs:
 
       - name: Install Lua
         run: |
-          pip install git+https://github.com/luarocks/hererocks
+          # pip install git+https://github.com/luarocks/hererocks
+          pip install hererocks
           hererocks lua_install -r@v3.13.0 --luajit=2.1
 
       - name: Run tests
         run: |
           source lua_install/bin/activate
+          luarocks install lrexlib-pcre2 2.9.1-1 WITH_SHARED_LIBUV=ON
           luarocks install lrexlib-pcre2
           luarocks install lrexlib-pcre2 2.9.2-1
           luarocks install lrexlib-pcre2 2.9.1-1
