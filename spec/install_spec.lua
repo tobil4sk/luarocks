@@ -33,6 +33,12 @@ describe("luarocks install #integration", function()
          end
       end)
 
+      it("installs lrexlib-pcre2 2.9.1-1", function()
+         if test_env.TYPE_TEST_ENV ~= "full" then
+            assert.is_true(run.luarocks_bool("install lrexlib-pcre2"))
+         end
+      end)
+
       pending("fails with no downloader", function()
          if test_env.TYPE_TEST_ENV ~= "full" then
             local output = assert(run.luarocks("install https://example.com/rock-1.0.src.rock", { LUAROCKS_CONFIG = testing_paths.testrun_dir .. "/testing_config_no_downloader.lua" } ))
