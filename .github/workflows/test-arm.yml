@@ -15,7 +15,7 @@ jobs:
         run: |
           # pip install git+https://github.com/luarocks/hererocks
           pip install hererocks
-          hererocks lua_install -r@v3.13.0 -j=2.1 -i
+          hererocks lua_install -r^ -j=2.1 -i
 
       - name: Run tests
         run: |
