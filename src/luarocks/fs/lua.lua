@@ -810,6 +810,13 @@ local function request(url, method, http, loop_control)  -- luacheck: ignore 431
    if cfg.connection_timeout and cfg.connection_timeout > 0 then
       http.TIMEOUT = cfg.connection_timeout
    end
+
+   print(url)
+   print(proxy)
+   print(method)
+   print(cfg.show_downloads)
+   print(cfg.user_agent)
+
    local res, status, headers, err = http.request {
       url = url,
       proxy = proxy,

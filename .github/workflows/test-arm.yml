@@ -1,0 +1,52 @@
+name: CI
+
+on: push
+
+jobs:
+  lua:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Lua
+        run: |
+          pip install hererocks
+          hererocks lua_install -j=2.1 -i --luarocks "$GITHUB_WORKSPACE"
+
+      - name: Run tests
+        run: |
+          source lua_install/bin/activate
+          luarocks install luasec 1.3.2-1
+          luarocks install lrexlib-pcre2 --verbose
+
+      - name: Run tests
+        if: always()
+        run: |
+          source lua_install/bin/activate
+          luarocks remove luasec
+          luarocks install luasec 1.3.1-1
+          luarocks install lrexlib-pcre2
+
+      - name: Run tests
+        if: always()
+        run: |
+          source lua_install/bin/activate
+          luarocks remove luasec
+          luarocks install luasec 1.3.0-1
+          luarocks install lrexlib-pcre2
+
+      - name: Run tests
+        if: always()
+        run: |
+          source lua_install/bin/activate
+          luarocks remove luasec
+          luarocks install luasec 1.2.0-1
+          luarocks install lrexlib-pcre2
+
+      - name: Run tests
+        if: always()
+        run: |
+          source lua_install/bin/activate
+          luarocks remove luasec
+          luarocks install luasec 1.1.0-1
+          luarocks install lrexlib-pcre2
