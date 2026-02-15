@@ -7,15 +7,15 @@ jobs:
     runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v6
-      - name:  Install libreadline
-        run: |
-          sudo apt-get install -y libreadline-dev
+      # - name:  Install libreadline
+      #   run: |
+      #     sudo apt-get install -y libreadline-dev
 
       - name: Install Lua
         run: |
           # pip install git+https://github.com/luarocks/hererocks
           pip install hererocks
-          hererocks lua_install -r@v3.13.0 --luajit=2.1
+          hererocks lua_install -r@v3.13.0 -j=2.1 -i
 
       - name: Run tests
         run: |
