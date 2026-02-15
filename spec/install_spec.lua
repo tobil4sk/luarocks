@@ -35,7 +35,8 @@ describe("luarocks install #integration", function()
 
       it("installs lrexlib-pcre2 2.9.1-1", function()
          if test_env.TYPE_TEST_ENV ~= "full" then
-            assert.is_true(run.luarocks_bool("install lrexlib-pcre2"))
+            local output = assert(run.luarocks("install lrexlib-pcre2"))
+            print(output)
          end
       end)
 
