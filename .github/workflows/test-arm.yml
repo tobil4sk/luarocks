@@ -11,7 +11,7 @@ jobs:
       - name: Install Lua
         run: |
           pip install hererocks
-          hererocks lua_install -j=2.1 -i --luarocks "$GITHUB_WORKSPACE"
+          hererocks lua_install -j=@v2.1 -i --luarocks "$GITHUB_WORKSPACE"
 
       - name: Run tests
         run: |
